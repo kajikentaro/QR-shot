@@ -12,11 +12,28 @@ namespace QR_shot
 {
     public partial class Form2 : Form
     {
+        WindowStateHolder wsh;
         public Form2()
         {
             InitializeComponent();
-            capture();
+            init();
+            Bitmap img = capture();
             maximize();
+            pictureBox1.Image = img;
+        }
+        private void init()
+        {
+            wsh = new WindowStateHolder();
+            pictureBox1.ClientSize = wsh.size;
+            pictureBox2.ClientSize = wsh.size;
+
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox2.Location = new Point(0, 0);
+
+            pictureBox2.Parent = pictureBox1;
+
+            canvas = new Bitmap(wsh.width, wsh.height, PixelFormat.Format32bppArgb);
+            graphics = Graphics.FromImage(canvas);
         }
 
         private void maximize()
@@ -25,23 +42,61 @@ namespace QR_shot
             this.StartPosition = FormStartPosition.Manual;
             //this.WindowState = FormWindowState.Maximized;
 
-            WindowStateHolder wsh = new WindowStateHolder();
             this.Location = new Point(wsh.sourceX, wsh.sourceY);
             this.Size = wsh.size;
         }
-        private void capture()
+        private Bitmap capture()
         {
-            WindowStateHolder wsh = new WindowStateHolder();
             Bitmap img = new Bitmap(wsh.width, wsh.height, PixelFormat.Format32bppArgb);
             Graphics g = Graphics.FromImage(img);
             g.CopyFromScreen(wsh.sourceX, wsh.sourceY, 0, 0, wsh.size);
-            img.Save("test.png", ImageFormat.Png);
-            System.Diagnostics.Process.Start(@".");
+            return img;
 
-            pictureBox1.ClientSize = wsh.size;
-            pictureBox1.Image = (Image)img;
-
+            //img.Save("test.png", ImageFormat.Png);
+            //System.Diagnostics.Process.Start(@".");
         }
+
+        Graphics graphics;
+        Point mouseDown;
+        Bitmap canvas;
+        bool click = false;
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            click = true;
+            mouseDown = e.Location;
+        }
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (click == false) return;
+            drawRect(e);
+        }
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (click == false) return;
+            drawRect(e);
+            click = false;
+        }
+        private void drawRect(MouseEventArgs e)
+        {
+            Point start = new Point();
+            Point end = new Point();
+            start.X = Math.Min(e.X, mouseDown.X);
+            start.Y = Math.Min(e.Y, mouseDown.Y);
+            end.X = Math.Max(e.X, mouseDown.X);
+            end.Y = Math.Max(e.Y, mouseDown.Y);
+
+            Pen blackPen = new Pen(Color.Black);
+
+            // 描画する線を点線に設定
+            blackPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+
+            // 画面を消去
+            graphics.Clear(SystemColors.Control);
+
+            graphics.DrawRectangle(blackPen, start.X, start.Y, Math.Abs(start.X - end.X),Math.Abs(start.Y - end.Y));
+        }
+
     }
     public class WindowStateHolder
     {
