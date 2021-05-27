@@ -42,9 +42,6 @@ namespace QR_shot
             this.pictureBox1.Size = new System.Drawing.Size(100, 50);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
-            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
             // pictureBox2
             // 
@@ -53,6 +50,9 @@ namespace QR_shot
             this.pictureBox2.Size = new System.Drawing.Size(100, 50);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseDown);
+            this.pictureBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseMove);
+            this.pictureBox2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseUp);
             // 
             // Form2
             // 

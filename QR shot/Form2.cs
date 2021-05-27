@@ -33,7 +33,6 @@ namespace QR_shot
             pictureBox2.Parent = pictureBox1;
 
             canvas = new Bitmap(wsh.width, wsh.height, PixelFormat.Format32bppArgb);
-            graphics = Graphics.FromImage(canvas);
         }
 
         private void maximize()
@@ -56,22 +55,21 @@ namespace QR_shot
             //System.Diagnostics.Process.Start(@".");
         }
 
-        Graphics graphics;
         Point mouseDown;
         Bitmap canvas;
         bool click = false;
 
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
             click = true;
             mouseDown = e.Location;
         }
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
         {
             if (click == false) return;
             drawRect(e);
         }
-        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        private void pictureBox2_MouseUp(object sender, MouseEventArgs e)
         {
             if (click == false) return;
             drawRect(e);
@@ -86,17 +84,27 @@ namespace QR_shot
             end.X = Math.Max(e.X, mouseDown.X);
             end.Y = Math.Max(e.Y, mouseDown.Y);
 
+            Console.WriteLine(start.X + " " + start.Y);
+            Console.WriteLine(end.X + " " + end.Y);
+            
+
             Pen blackPen = new Pen(Color.Black);
 
             // 描画する線を点線に設定
             blackPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
 
+            Graphics graphics = Graphics.FromImage(canvas);
             // 画面を消去
-            graphics.Clear(SystemColors.Control);
+            graphics.Clear(Color.FromArgb(20, 0, 0, 0));
+            pictureBox2.BackColor = Color.Transparent;
+            //pictureBox2.Visible = false;
+
 
             graphics.DrawRectangle(blackPen, start.X, start.Y, Math.Abs(start.X - end.X),Math.Abs(start.Y - end.Y));
-        }
 
+
+            pictureBox2.Image = canvas;
+        }
     }
     public class WindowStateHolder
     {
