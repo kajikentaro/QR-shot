@@ -37,7 +37,7 @@ namespace QR_shot
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 50);
             this.pictureBox1.TabIndex = 0;
@@ -45,7 +45,7 @@ namespace QR_shot
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(344, 178);
+            this.pictureBox2.Location = new System.Drawing.Point(12, 79);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(100, 50);
             this.pictureBox2.TabIndex = 1;

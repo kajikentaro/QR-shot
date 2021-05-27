@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QR_shot
@@ -13,11 +9,12 @@ namespace QR_shot
     public partial class Form2 : Form
     {
         WindowStateHolder wsh;
+        Bitmap img;
         public Form2()
         {
             InitializeComponent();
             init();
-            Bitmap img = capture();
+            img = capture();
             maximize();
             pictureBox1.Image = img;
         }
@@ -31,8 +28,11 @@ namespace QR_shot
             pictureBox2.Location = new Point(0, 0);
 
             pictureBox2.Parent = pictureBox1;
+            pictureBox2.BackColor = Color.FromArgb(50,255,255,255);
 
             canvas = new Bitmap(wsh.width, wsh.height, PixelFormat.Format32bppArgb);
+            graphics = Graphics.FromImage(canvas);
+
         }
 
         private void maximize()
@@ -49,20 +49,21 @@ namespace QR_shot
             Bitmap img = new Bitmap(wsh.width, wsh.height, PixelFormat.Format32bppArgb);
             Graphics g = Graphics.FromImage(img);
             g.CopyFromScreen(wsh.sourceX, wsh.sourceY, 0, 0, wsh.size);
+            g.Dispose();
             return img;
 
             //img.Save("test.png", ImageFormat.Png);
             //System.Diagnostics.Process.Start(@".");
         }
 
-        Point mouseDown;
+        Graphics graphics;
         Bitmap canvas;
         bool click = false;
 
         private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
             click = true;
-            mouseDown = e.Location;
+            RectStateHolder.mouseDown = e.Location;
         }
         private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
         {
@@ -74,36 +75,53 @@ namespace QR_shot
             if (click == false) return;
             drawRect(e);
             click = false;
+
+            RectStateHolder rsh = new RectStateHolder(e.X, e.Y);
+            cutImg(img, rsh.start.X, rsh.start.Y, rsh.width, rsh.height);
+            this.Close();
+        }
+        private void cutImg(Bitmap img,int sourceX, int sourceY, int width, int height)
+        {
+            Bitmap c = new Bitmap(width, height);
+            Graphics g = Graphics.FromImage(c);
+            Rectangle srcRect = new Rectangle(sourceX, sourceY, width, height);
+            Rectangle desRect = new Rectangle(0, 0, width, height);
+            g.DrawImage(img, desRect, srcRect, GraphicsUnit.Pixel);
+            g.Dispose();
+            c.Save("test.png", ImageFormat.Png);
+            System.Diagnostics.Process.Start(".");
         }
         private void drawRect(MouseEventArgs e)
         {
-            Point start = new Point();
-            Point end = new Point();
-            start.X = Math.Min(e.X, mouseDown.X);
-            start.Y = Math.Min(e.Y, mouseDown.Y);
-            end.X = Math.Max(e.X, mouseDown.X);
-            end.Y = Math.Max(e.Y, mouseDown.Y);
-
-            Console.WriteLine(start.X + " " + start.Y);
-            Console.WriteLine(end.X + " " + end.Y);
-            
-
-            Pen blackPen = new Pen(Color.Black);
-
-            // 描画する線を点線に設定
-            blackPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
-
-            Graphics graphics = Graphics.FromImage(canvas);
-            // 画面を消去
-            graphics.Clear(Color.FromArgb(20, 0, 0, 0));
-            pictureBox2.BackColor = Color.Transparent;
-            //pictureBox2.Visible = false;
+            graphics.Clear(Color.Transparent);
+            RectStateHolder rsh = new RectStateHolder(e.X, e.Y);
 
 
-            graphics.DrawRectangle(blackPen, start.X, start.Y, Math.Abs(start.X - end.X),Math.Abs(start.Y - end.Y));
+            Pen pen = new Pen(Color.Black);
+            pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            pen.Width = 3;
+            graphics.DrawRectangle(pen, rsh.start.X, rsh.start.Y, rsh.width, rsh.height);
 
+            SolidBrush blueBrush = new SolidBrush(Color.FromArgb(15,0,0,0));
+            graphics.FillRectangle(blueBrush, rsh.start.X, rsh.start.Y, rsh.width, rsh.height);
 
             pictureBox2.Image = canvas;
+        }
+    }
+    public class RectStateHolder
+    {
+        public static Point mouseDown { get; set; }
+        public Point start{ get; set; }
+        public Point end { get; set; }
+        public int width { get; set; }
+        public int height { get; set; }
+        
+        public RectStateHolder(int x, int y)
+        {
+            this.start = new Point(Math.Min(x, mouseDown.X), Math.Min(y, mouseDown.Y));
+            this.end= new Point(Math.Max(x, mouseDown.X), Math.Max(y, mouseDown.Y));
+            this.width = Math.Abs(this.start.X - this.end.X);
+            this.height = Math.Abs(this.start.Y - this.end.Y);
         }
     }
     public class WindowStateHolder
