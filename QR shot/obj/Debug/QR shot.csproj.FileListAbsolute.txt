@@ -1,0 +1,10 @@
+C:\Users\aaa\source\repos\QR shot\QR shot\bin\Debug\QR shot.exe
+C:\Users\aaa\source\repos\QR shot\QR shot\bin\Debug\QR shot.pdb
+C:\Users\aaa\source\repos\QR shot\QR shot\obj\Debug\QR shot.csprojAssemblyReference.cache
+C:\Users\aaa\source\repos\QR shot\QR shot\obj\Debug\QR_shot.Form1.resources
+C:\Users\aaa\source\repos\QR shot\QR shot\obj\Debug\QR_shot.Properties.Resources.resources
+C:\Users\aaa\source\repos\QR shot\QR shot\obj\Debug\QR shot.csproj.GenerateResource.cache
+C:\Users\aaa\source\repos\QR shot\QR shot\obj\Debug\QR shot.csproj.CoreCompileInputs.cache
+C:\Users\aaa\source\repos\QR shot\QR shot\obj\Debug\QR shot.exe
+C:\Users\aaa\source\repos\QR shot\QR shot\obj\Debug\QR shot.pdb
+C:\Users\aaa\source\repos\QR shot\QR shot\obj\Debug\QR_shot.Form2.resources
