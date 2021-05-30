@@ -37,29 +37,30 @@ namespace QR_shot
             // 
             this.shot.Location = new System.Drawing.Point(12, 12);
             this.shot.Name = "shot";
-            this.shot.Size = new System.Drawing.Size(511, 78);
+            this.shot.Size = new System.Drawing.Size(331, 49);
             this.shot.TabIndex = 0;
-            this.shot.Text = "button1";
+            this.shot.Text = "読み取り開始";
             this.shot.UseVisualStyleBackColor = true;
             this.shot.Click += new System.EventHandler(this.button1_Click);
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 138);
+            this.richTextBox1.Location = new System.Drawing.Point(12, 67);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(511, 300);
+            this.richTextBox1.Size = new System.Drawing.Size(331, 216);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
+            this.richTextBox1.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBox1_LinkClicked_1);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(537, 450);
+            this.ClientSize = new System.Drawing.Size(356, 292);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.shot);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "QR Shot";
             this.ResumeLayout(false);
 
         }

@@ -8,3 +8,8 @@ C:\Users\aaa\source\repos\QR shot\QR shot\obj\Debug\QR shot.csproj.CoreCompileIn
 C:\Users\aaa\source\repos\QR shot\QR shot\obj\Debug\QR shot.exe
 C:\Users\aaa\source\repos\QR shot\QR shot\obj\Debug\QR shot.pdb
 C:\Users\aaa\source\repos\QR shot\QR shot\obj\Debug\QR_shot.Form2.resources
+C:\Users\aaa\source\repos\QR Shot\QR shot\bin\Debug\zxing.dll
+C:\Users\aaa\source\repos\QR Shot\QR shot\bin\Debug\zxing.presentation.dll
+C:\Users\aaa\source\repos\QR Shot\QR shot\bin\Debug\zxing.xml
+C:\Users\aaa\source\repos\QR Shot\QR shot\bin\Debug\zxing.presentation.xml
+C:\Users\aaa\source\repos\QR Shot\QR shot\obj\Debug\QR shot.csproj.CopyComplete

@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZXing;
 
 namespace QR_shot
 {
@@ -58,29 +59,59 @@ namespace QR_shot
 
         Graphics graphics;
         Bitmap canvas;
-        bool click = false;
+        bool selecting = false;
+        bool clickSelectionMode = false;
 
+        private void readQRandResponse(Bitmap qrImg)
+        {
+            IBarcodeReader reader = new BarcodeReader();
+            var result = reader.Decode(qrImg);
+            Form1 form1 = this.Owner as Form1;
+            if (result != null) {
+                form1.response = result.Text;
+            }
+            else
+            {
+                form1.response = "読み取りに失敗しました。";
+            }
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.Close();
+
+        }
         private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
-            click = true;
+            if(clickSelectionMode == true)
+            {
+                RectStateHolder rsh = new RectStateHolder(e.X, e.Y);
+                Bitmap qrImg = cutImg(img, rsh.start.X, rsh.start.Y, rsh.width, rsh.height);
+                readQRandResponse(qrImg);
+                return;
+            }
+            selecting = true;
             RectStateHolder.mouseDown = e.Location;
         }
         private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
         {
-            if (click == false) return;
+            if (selecting == false) return;
             drawRect(e);
         }
         private void pictureBox2_MouseUp(object sender, MouseEventArgs e)
         {
-            if (click == false) return;
+            if (selecting == false) return;
             drawRect(e);
-            click = false;
+            selecting = false;
 
             RectStateHolder rsh = new RectStateHolder(e.X, e.Y);
-            cutImg(img, rsh.start.X, rsh.start.Y, rsh.width, rsh.height);
-            this.Close();
+            if(rsh.width == 0 || rsh.height == 0)
+            {
+                clickSelectionMode = true;
+                selecting = true;
+                return;
+            }
+            Bitmap qrImg = cutImg(img, rsh.start.X, rsh.start.Y, rsh.width, rsh.height);
+            readQRandResponse(qrImg);
         }
-        private void cutImg(Bitmap img,int sourceX, int sourceY, int width, int height)
+        private Bitmap cutImg(Bitmap img,int sourceX, int sourceY, int width, int height)
         {
             Bitmap c = new Bitmap(width, height);
             Graphics g = Graphics.FromImage(c);
@@ -88,8 +119,9 @@ namespace QR_shot
             Rectangle desRect = new Rectangle(0, 0, width, height);
             g.DrawImage(img, desRect, srcRect, GraphicsUnit.Pixel);
             g.Dispose();
-            c.Save("test.png", ImageFormat.Png);
-            System.Diagnostics.Process.Start(".");
+            //c.Save("test.png", ImageFormat.Png);
+            //System.Diagnostics.Process.Start(".");
+            return c;
         }
         private void drawRect(MouseEventArgs e)
         {
