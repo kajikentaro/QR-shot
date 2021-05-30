@@ -1,0 +1,15 @@
+C:\Users\aaa\source\repos\QR Shot\QR shot\bin\Release\QR shot.exe
+C:\Users\aaa\source\repos\QR Shot\QR shot\bin\Release\QR shot.pdb
+C:\Users\aaa\source\repos\QR Shot\QR shot\bin\Release\zxing.dll
+C:\Users\aaa\source\repos\QR Shot\QR shot\bin\Release\zxing.presentation.dll
+C:\Users\aaa\source\repos\QR Shot\QR shot\bin\Release\zxing.xml
+C:\Users\aaa\source\repos\QR Shot\QR shot\bin\Release\zxing.presentation.xml
+C:\Users\aaa\source\repos\QR Shot\QR shot\obj\Release\QR shot.csprojAssemblyReference.cache
+C:\Users\aaa\source\repos\QR Shot\QR shot\obj\Release\QR_shot.Form1.resources
+C:\Users\aaa\source\repos\QR Shot\QR shot\obj\Release\QR_shot.Form2.resources
+C:\Users\aaa\source\repos\QR Shot\QR shot\obj\Release\QR_shot.Properties.Resources.resources
+C:\Users\aaa\source\repos\QR Shot\QR shot\obj\Release\QR shot.csproj.GenerateResource.cache
+C:\Users\aaa\source\repos\QR Shot\QR shot\obj\Release\QR shot.csproj.CoreCompileInputs.cache
+C:\Users\aaa\source\repos\QR Shot\QR shot\obj\Release\QR shot.csproj.CopyComplete
+C:\Users\aaa\source\repos\QR Shot\QR shot\obj\Release\QR shot.exe
+C:\Users\aaa\source\repos\QR Shot\QR shot\obj\Release\QR shot.pdb
