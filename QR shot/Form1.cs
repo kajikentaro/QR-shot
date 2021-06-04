@@ -36,5 +36,26 @@ namespace QR_shot
         {
             System.Diagnostics.Process.Start(e.LinkText);
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3();
+            form3.Show();
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://kajindowsxp.com/qr-shot");
+        }
+
+        private void shotToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            button1_Click(null, null);
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

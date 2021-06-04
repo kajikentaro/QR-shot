@@ -13,3 +13,9 @@ C:\Users\aaa\source\repos\QR Shot\QR shot\bin\Debug\zxing.presentation.dll
 C:\Users\aaa\source\repos\QR Shot\QR shot\bin\Debug\zxing.xml
 C:\Users\aaa\source\repos\QR Shot\QR shot\bin\Debug\zxing.presentation.xml
 C:\Users\aaa\source\repos\QR Shot\QR shot\obj\Debug\QR shot.csproj.CopyComplete
+C:\Users\aaa\source\repos\QR Shot\QR shot\obj\Debug\QR_shot.Form3.resources
+C:\Users\aaa\source\repos\QR Shot\QR shot\bin\Debug\QR shot.exe.manifest
+C:\Users\aaa\source\repos\QR Shot\QR shot\bin\Debug\QR shot.application
+C:\Users\aaa\source\repos\QR Shot\QR shot\obj\Debug\QR shot.TrustInfo.xml
+C:\Users\aaa\source\repos\QR Shot\QR shot\obj\Debug\QR shot.exe.manifest
+C:\Users\aaa\source\repos\QR Shot\QR shot\obj\Debug\QR shot.application
