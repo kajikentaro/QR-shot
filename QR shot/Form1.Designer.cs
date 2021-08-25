@@ -84,21 +84,21 @@ namespace QR_shot
             // shotToolStripMenuItem
             // 
             this.shotToolStripMenuItem.Name = "shotToolStripMenuItem";
-            this.shotToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.shotToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.shotToolStripMenuItem.Text = "読み取り開始(&S)";
             this.shotToolStripMenuItem.Click += new System.EventHandler(this.shotToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.aboutToolStripMenuItem.Text = "about(&A)";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.exitToolStripMenuItem.Text = "終了(&E)";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
